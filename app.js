@@ -39,10 +39,10 @@ app.all('*', (req, res) => {
 
 
 
-app.listen(process.env.PORT, (err) => {
+app.listen(3000, (err) => {
     if (err) {
         return console.log(`Error ${err}`);
     }
 
-    console.log(`Ejecutando aplicación en puerto ${process.env.PORT}`);
+    console.log(`Ejecutando aplicación en puerto 3000`);
 })
