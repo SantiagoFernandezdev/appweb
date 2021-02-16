@@ -14,19 +14,6 @@ app.use(cors({ origin: true, credentials: true }));
 app.use(bodyParser.urlencoded({ extended: false, limit: '9000mb' }));
 app.use(bodyParser.json({ limit: '9000mb' }));
 
-const mime = require('mime');
-
-// escribimos la función que creará nuestra cabecera
-const setHeadersOnStatic = (res, path, stat) => {
-    const type = mime.getType(path);
-    res.set('content-type', type);
-}
-
-// creamos el objeto con las opciones
-const staticOptions = {
-    setHeaders: setHeadersOnStatic
-}
-
 app.use(express.static(__dirname + '/public/www/', staticOptions));
 app.all('*', (req, res) => {
     res.status(200).sendFile(__dirname + '/public/www/index.html');
